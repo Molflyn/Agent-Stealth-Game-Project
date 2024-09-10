@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://df5d4ogetrbd7"]
+
+[ext_resource type="PackedScene" uid="uid://dlubjwlx17tmn" path="res://Assets/environment.tscn" id="1_pio8i"]
+[ext_resource type="PackedScene" uid="uid://crstj22d81m1m" path="res://Assets/Player Controller/player.tscn" id="1_tny7q"]
+[ext_resource type="Texture2D" uid="uid://dh84f2721lhyv" path="res://Assets/kenney_prototype_textures/dark/texture_03.png" id="3_d2f8a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x11cd"]
+albedo_texture = ExtResource("3_d2f8a")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Tutorial Level" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_tny7q")]
+
+[node name="Environment" parent="." instance=ExtResource("1_pio8i")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_x11cd")
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1)
+flip_faces = true
+size = Vector3(9, 5, 8)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -7.5)
+flip_faces = true
+size = Vector3(31, 5, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.5, -20.5)
+flip_faces = true
+size = Vector3(5, 5, 21)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.5, -19.5)
+flip_faces = true
+size = Vector3(9, 5, 13)
+
+[node name="Doorway CSG" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_x11cd")
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Doorway CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5.0005)
+flip_faces = true
+size = Vector3(9, 5, 0.001)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Doorway CSG/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+operation = 2
+flip_faces = true
+size = Vector3(3, 3, 0.001)
+
+[editable path="Player"]
+[editable path="Environment"]
