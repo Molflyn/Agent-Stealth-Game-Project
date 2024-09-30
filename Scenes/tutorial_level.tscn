@@ -13,6 +13,9 @@ uv1_world_triplanar = true
 
 [node name="Player" parent="." instance=ExtResource("1_tny7q")]
 
+[node name="Roll Duration" parent="Player" index="5"]
+wait_time = 0.3
+
 [node name="Environment" parent="." instance=ExtResource("1_pio8i")]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
